@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتدى الأمين لتنمية الحقوق السياسية والمدنية</title>
+    <!-- استدعاء خط "تجوال" و "أميري" من جوجل فونتس لدعم اللغة العربية بشكل جميل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">
+            <!-- تغيير الأيقونة لتناسب الحقوق -->
+            <i class="fas fa-balance-scale"></i>
+            منتدى الأمين
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li class="nav-item active">
+                <a href="#home" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+                <a href="#books" class="nav-link">الكتب</a>
+            </li>
+            <li class="nav-item">
+                <a href="#research" class="nav-link">أبحاث ومقالات <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">بحوث ودراسات</a></li>
+                    <li><a href="#" class="dropdown-item">مقالات عامة</a></li>
+                    <li><a href="#" class="dropdown-item">ترجمات</a></li>
+                    <li><a href="#" class="dropdown-item">مراجعات</a></li>
+                    <li><a href="#" class="dropdown-item">لقاءات</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#events" class="nav-link">الفعاليات <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">المؤتمرات</a></li>
+                    <li><a href="#" class="dropdown-item">المنتدى الثقافي</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link">عن المنتدى</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">منتدى الأمين لتنمية الحقوق السياسية والمدنية</h1>
+            <p class="hero-subtitle">نحو مجتمع مدني واعٍ، ومشاركة سياسية فاعلة، وترسيخ لمبادئ العدالة وسيادة القانون.</p>
+            <a href="#research" class="btn">اطلع على الدراسات</a>
+            <a href="#about" class="btn btn-outline">رؤية المنتدى</a>
+        </div>
+    </section>
+
+    <!-- قسم الإصدارات -->
+    <section class="section" id="books">
+        <div class="section-header">
+            <h2>أحدث الإصدارات</h2>
+            <p>مكتبة متخصصة في الحقوق، الحريات، والتنمية السياسية</p>
+        </div>
+        <div class="books-grid">
+            <!-- كتاب 1 -->
+            <div class="book-card">
+                <!-- صورة رمزية قانونية -->
+                <img src="https://images.unsplash.com/photo-1589216532372-1c2a367900d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="كتاب" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title">الدليل العملي للمشاركة السياسية</h3>
+                    <p class="book-author">لجنة البحوث والتطوير</p>
+                    <a href="#" class="read-more">تحميل الدليل <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            <!-- كتاب 2 -->
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd81?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="كتاب" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title">حقوق الإنسان في الدساتير الحديثة</h3>
+                    <p class="book-author">د. سمير العلي</p>
+                    <a href="#" class="read-more">تفاصيل الإصدار <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            <!-- كتاب 3 -->
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="كتاب" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title">المجتمع المدني والتحول الديمقراطي</h3>
+                    <p class="book-author">أ. هدى ناصر</p>
+                    <a href="#" class="read-more">تفاصيل الإصدار <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأبحاث والمقالات -->
+    <section class="section" id="research" style="background-color: #eaeef3;">
+        <div class="section-header">
+            <h2>دراسات ومقالات</h2>
+            <p>تحليلات معمقة للواقع الحقوقي والسياسي</p>
+        </div>
+        <div class="articles-container">
+            <!-- مقال 1 -->
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="صورة المقال" class="article-image">
+                <div class="article-content">
+                    <div class="article-meta">أوراق سياسات • 20 أكتوبر 2023</div>
+                    <h3 class="article-title">تحديات العمل الأهلي في ظل التشريعات الجديدة</h3>
+                    <p class="article-excerpt">ورقة سياسات تناقش تأثير القوانين الحديثة على حرية تأسيس الجمعيات وممارسة النشاط المدني...</p>
+                    <a href="#" class="read-more">قراءة الورقة</a>
+                </div>
+            </div>
+            <!-- مقال 2 -->
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="صورة المقال" class="article-image">
+                <div class="article-content">
+                    <div class="article-meta">حقوق الإنسان • 12 أكتوبر 2023</div>
+                    <h3 class="article-title">الحق في الوصول للمعلومات: ضرورة ديمقراطية</h3>
+                    <p class="article-excerpt">دراسة تستعرض أهمية الشفافية وإتاحة المعلومات كركيزة أساسية لمكافحة الفساد وتعزيز المساءلة...</p>
+                    <a href="#" class="read-more">اقرأ المقال</a>
+                </div>
+            </div>
+            <!-- مقال 3 -->
+            <div class="article-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="صورة المقال" class="article-image">
+                <div class="article-content">
+                    <div class="article-meta">توعية مدنية • 5 أكتوبر 2023</div>
+                    <h3 class="article-title">مفهوم المواطنة الفاعلة وأدوار الشباب</h3>
+                    <p class="article-excerpt">مقالة تعريفية بأدوار الشباب في الرقابة الشعبية والمشاركة في صنع القرار المحلي...</p>
+                    <a href="#" class="read-more">اقرأ المقال</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفعاليات -->
+    <section class="section events-section" id="events">
+        <div class="section-header">
+            <h2>الفعاليات القادمة</h2>
+        </div>
+        <div class="event-card">
+            <div class="event-date">
+                <span class="date-day">15</span>
+                <span class="date-month">نوفمبر</span>
+            </div>
+            <div class="event-details">
+                <h3>ندوة: الإصلاح الانتخابي وضمانات النزاهة</h3>
+                <p>جلسة نقاشية حول المعايير الدولية للانتخابات الحرة والنزيهة ودور المراقبين.</p>
+                <a href="#" class="read-more" style="margin-top: 10px;">التسجيل في الندوة</a>
+            </div>
+        </div>
+        <div class="event-card">
+            <div class="event-date">
+                <span class="date-day">22</span>
+                <span class="date-month">نوفمبر</span>
+            </div>
+            <div class="event-details">
+                <h3>ورشة عمل: آليات الرصد والتوثيق الحقوقي</h3>
+                <p>دورة تدريبية للنشطاء والحقوقيين حول كيفية رصد الانتهاكات وإعداد التقارير الحقوقية.</p>
+                <a href="#" class="read-more" style="margin-top: 10px;">تفاصيل الورشة</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- عن المنتدى -->
+    <section class="section" id="about" style="background-color: var(--primary-color); color: white; text-align: center;">
+        <div class="section-header">
+            <h2 style="color: white;">عن المنتدى</h2>
+        </div>
+        <p style="max-width: 800px; margin: 0 auto; color: #e2e8f0;">
+            "منتدى الأمين لتنمية الحقوق السياسية والمدنية" هو مؤسسة مدنية مستقلة تهدف إلى تعزيز الوعي بالحقوق الدستورية والقانونية. نعمل على تمكين المواطنين من المشاركة الفاعلة في الحياة العامة، ودعم قيم الديمقراطية، المساواة، وسيادة القانون من خلال البحث العلمي، التدريب، والحوار المجتمعي البناء.
+        </p>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>منتدى الأمين</h3>
+                <p style="color: #cbd5e0; font-size: 0.9rem;">شريكك في التنمية السياسية والوعي الحقوقي.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>روابط مهمة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">الرؤية والرسالة</a></li>
+                    <li><a href="#books">المكتبة الحقوقية</a></li>
+                    <li><a href="#research">أوراق السياسات</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@alaminrights.org</li>
+                    <li><i class="fas fa-phone"></i> +966 11 234 5678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> المقر الرئيسي</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة &copy; 2023 منتدى الأمين لتنمية الحقوق السياسية والمدنية</p>
+        </div>
+    </footer>
+
+    <!-- سكربت بسيط لتفعيل القائمة في الجوال -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

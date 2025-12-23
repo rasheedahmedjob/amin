@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحديات العمل الأهلي والتشريعات - منتدى الأمين</title>
+    <!-- استدعاء خط "تجوال" و "أميري" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- نفس متغيرات الألوان والتنسيقات الأساسية --- */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #c5a059;
+            --bg-light: #f9fafb;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        a:hover { color: var(--secondary-color); }
+        ul { list-style: none; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Tajawal', sans-serif; font-weight: 700; color: var(--primary-color); }
+        p { font-family: 'Amiri', serif; font-size: 1.15rem; color: #4a5568; line-height: 1.8; margin-bottom: 1.5rem; }
+
+        /* --- شريط التنقل (Navbar) --- */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i { color: var(--secondary-color); font-size: 1.8rem; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-item { position: relative; padding: 10px 0; }
+        .nav-link { font-weight: 500; font-size: 1.05rem; color: var(--text-dark); }
+        .nav-link:hover, .nav-item.active .nav-link { color: var(--secondary-color); }
+        .nav-link i { font-size: 0.8rem; margin-right: 5px; }
+
+        .dropdown-menu {
+            position: absolute; top: 100%; right: 0; background-color: var(--white); width: 220px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-top: 3px solid var(--secondary-color);
+            opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition);
+            border-radius: 0 0 8px 8px;
+            z-index: 1001;
+        }
+        .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { padding: 12px 20px; border-bottom: 1px solid #eee; display: block; font-size: 0.95rem; color: var(--text-dark); }
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover { background-color: #f7fafc; color: var(--primary-color); padding-right: 25px; }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--primary-color); }
+
+        /* --- تخطيط صفحة المقال --- */
+        .article-container {
+            max-width: 1200px;
+            margin: 120px auto 60px; /* هامش علوي لتعويض النافبار */
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* عمودين: المقال (عريض) والجانب (ضيق) */
+            gap: 40px;
+        }
+
+        /* --- المحتوى الرئيسي للمقال --- */
+        .article-main {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* مسار التنقل (Breadcrumb) */
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* رأس المقال */
+        .article-header { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .article-category { 
+            display: inline-block; 
+            background-color: rgba(197, 160, 89, 0.1); 
+            color: var(--secondary-color); 
+            padding: 5px 15px; 
+            border-radius: 50px; 
+            font-size: 0.85rem; 
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .article-title { font-size: 2.5rem; line-height: 1.3; margin-bottom: 15px; }
+        .article-meta { display: flex; align-items: center; gap: 20px; color: var(--text-light); font-size: 0.9rem; }
+        .article-meta i { margin-left: 5px; color: var(--secondary-color); }
+
+        /* صورة المقال */
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        /* نص المقال */
+        .article-body { color: #2d3748; }
+        .article-body h2 { font-size: 1.8rem; margin: 30px 0 15px; position: relative; padding-right: 15px; }
+        .article-body h2::before {
+            content: ''; position: absolute; right: 0; top: 5px; bottom: 5px; width: 4px; background-color: var(--secondary-color); border-radius: 2px;
+        }
+        .article-body ul { list-style: disc; padding-right: 20px; margin-bottom: 20px; }
+        .article-body li { font-family: 'Amiri', serif; font-size: 1.1rem; margin-bottom: 10px; color: #4a5568; }
+        
+        .quote-box {
+            background-color: #f8f9fa;
+            border-right: 5px solid var(--primary-color);
+            padding: 20px;
+            margin: 30px 0;
+            font-family: 'Amiri', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        /* وسم (Tags) ومشاركة */
+        .article-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .tags span { 
+            background: #edf2f7; color: var(--text-light); padding: 5px 10px; border-radius: 4px; font-size: 0.85rem; margin-left: 5px; 
+        }
+        .share-buttons a {
+            display: inline-flex; width: 35px; height: 35px; border-radius: 50%; background: #f7fafc; color: var(--primary-color);
+            align-items: center; justify-content: center; margin-right: 5px; border: 1px solid #e2e8f0;
+        }
+        .share-buttons a:hover { background: var(--primary-color); color: var(--white); border-color: var(--primary-color); }
+
+
+        /* --- الشريط الجانبي (Sidebar) --- */
+        .sidebar { position: sticky; top: 100px; height: fit-content; }
+        
+        .sidebar-widget {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .widget-title { font-size: 1.2rem; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+        .widget-title::after {
+            content: ''; display: block; width: 50px; height: 2px; background: var(--secondary-color); margin-top: 10px; margin-bottom: -12px;
+        }
+
+        /* قائمة المقالات الجانبية */
+        .sidebar-posts .post-item { display: flex; gap: 15px; margin-bottom: 20px; }
+        .sidebar-posts .post-thumb { width: 70px; height: 70px; border-radius: 5px; object-fit: cover; flex-shrink: 0; }
+        .sidebar-posts .post-info h4 { font-size: 0.95rem; margin-bottom: 5px; line-height: 1.4; }
+        .sidebar-posts .post-info h4 a:hover { color: var(--secondary-color); }
+        .sidebar-posts .post-date { font-size: 0.75rem; color: var(--text-light); }
+
+        /* التصنيفات */
+        .categories-list li { 
+            border-bottom: 1px solid #eee; padding: 10px 0; display: flex; justify-content: space-between; 
+        }
+        .categories-list li:last-child { border-bottom: none; }
+        .categories-list li a { color: var(--text-dark); font-weight: 500; }
+        .categories-list li span { background: #edf2f7; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; color: var(--text-light); }
+
+        /* صندوق النشرة البريدية */
+        .newsletter-box { text-align: center; }
+        .newsletter-box p { font-size: 0.95rem; margin-bottom: 15px; }
+        .newsletter-input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; font-family: inherit; }
+        .newsletter-btn { width: 100%; padding: 10px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .newsletter-btn:hover { background: var(--secondary-color); }
+
+
+        /* --- الفوتر --- */
+        footer { background-color: var(--primary-color); color: var(--white); padding: 60px 5% 20px; margin-top: auto; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { color: var(--secondary-color); margin-bottom: 20px; font-size: 1.4rem; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--secondary-color); padding-right: 5px; }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .social-icons a:hover { background: var(--secondary-color); }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #a0aec0; }
+
+        /* --- التجاوب --- */
+        @media (max-width: 992px) {
+            .article-container { grid-template-columns: 1fr; }
+            .sidebar { position: static; margin-top: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: absolute; top: 80px; right: 0; width: 100%; background-color: var(--white);
+                flex-direction: column; align-items: flex-start; padding: 20px; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+            }
+            .nav-links.active { max-height: 500px; overflow-y: auto; }
+            .nav-item { width: 100%; border-bottom: 1px solid #eee; }
+            .dropdown-menu { position: static; width: 100%; box-shadow: none; border: none; background-color: #f8f9fa; padding-right: 20px; display: none; opacity: 1; visibility: visible; transform: none; }
+            .nav-item:hover .dropdown-menu { display: block; }
+            
+            .article-title { font-size: 1.8rem; }
+            .article-main { padding: 20px; }
+            .featured-image { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-balance-scale"></i>
+            منتدى الأمين
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#books" class="nav-link">الكتب</a>
+            </li>
+            <li class="nav-item active">
+                <a href="articles.html" class="nav-link">أبحاث ومقالات <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">بحوث ودراسات</a></li>
+                    <li><a href="#" class="dropdown-item">مقالات عامة</a></li>
+                    <li><a href="#" class="dropdown-item">ترجمات</a></li>
+                    <li><a href="#" class="dropdown-item">مراجعات</a></li>
+                    <li><a href="#" class="dropdown-item">لقاءات</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#events" class="nav-link">الفعاليات <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">المؤتمرات</a></li>
+                    <li><a href="#" class="dropdown-item">المنتدى الثقافي</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#about" class="nav-link">عن المنتدى</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <div class="article-container">
+        
+        <!-- العمود الأيمن: المقال الرئيسي -->
+        <main class="article-main">
+            <!-- مسار التنقل -->
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a> <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+                <a href="articles.html">أبحاث ومقالات</a> <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+                <span>أوراق سياسات</span>
+            </div>
+
+            <!-- رأس المقال -->
+            <header class="article-header">
+                <span class="article-category">أوراق سياسات</span>
+                <h1 class="article-title">تحديات العمل الأهلي في ظل التشريعات الجديدة: قراءة قانونية وحقوقية</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-user"></i> د. محمد الفاضل</span>
+                    <span><i class="far fa-calendar-alt"></i> 20 أكتوبر 2023</span>
+                    <span><i class="far fa-eye"></i> 1,250 قراءة</span>
+                </div>
+            </header>
+
+            <!-- الصورة البارزة -->
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="صورة المقال" class="featured-image">
+
+            <!-- نص المقال -->
+            <article class="article-body">
+                <p>
+                    يشكل المجتمع المدني ركيزة أساسية لأي نظام ديمقراطي حديث، حيث يلعب دور الوسيط بين المواطن والدولة، ويساهم في صياغة السياسات العامة والدفاع عن حقوق الفئات المهمشة. ومع ذلك، تواجه منظمات العمل الأهلي في السنوات الأخيرة تحديات متزايدة تتعلق بالبيئة التشريعية المنظمة لعملها.
+                </p>
+                
+                <h2>الإطار القانوني الجديد: قيود أم تنظيم؟</h2>
+                <p>
+                    صدر القانون الجديد لتنظيم العمل الأهلي وسط جدل واسع بين الحقوقيين والمشرعين. بينما ترى الجهات الرسمية أن القانون يهدف إلى ضبط التمويل وضمان الشفافية، يرى نشطاء المجتمع المدني أنه يفرض قيوداً بيروقراطية تعيق حرية التأسيس والنشاط.
+                </p>
+                <div class="quote-box">
+                    "إن حرية تكوين الجمعيات ليست مجرد حق قانوني، بل هي متنفس للمجتمع للتعبير عن تطلعاته والمساهمة في التنمية المستدامة."
+                </div>
+                <p>
+                    من أبرز النقاط الخلافية في القانون الجديد هي اشتراط الموافقة المسبقة على الأنشطة الميدانية، مما يقلل من قدرة الجمعيات على الاستجابة السريعة للأزمات أو تنظيم الفعاليات المجتمعية.
+                </p>
+
+                <h2>التأثير على التمويل والاستدامة</h2>
+                <p>
+                    تعتمد العديد من المنظمات غير الحكومية على المنح والمساعدات لتمويل برامجها. يضع التشريع الجديد آليات معقدة للموافقة على التمويل الخارجي، وهو ما قد يؤدي إلى:
+                </p>
+                <ul>
+                    <li>تأخر تنفيذ المشاريع التنموية والحقوقية.</li>
+                    <li>إغلاق بعض الجمعيات الصغيرة التي لا تمتلك القدرة الإدارية للتعامل مع المتطلبات الجديدة.</li>
+                    <li>تراجع مستوى الخدمات المقدمة للفئات المستفيدة.</li>
+                </ul>
+
+                <h2>التوصيات والحلول المقترحة</h2>
+                <p>
+                    لتجاوز هذه العقبات، نقترح حزمة من الإصلاحات التشريعية التي تضمن التوازن بين متطلبات الأمن القومي وحرية العمل المدني، ومنها:
+                </p>
+                <ul>
+                    <li>اعتماد نظام "الإخطار" بدلاً من "الترخيص" عند تأسيس الجمعيات.</li>
+                    <li>تبسيط الإجراءات المالية والضريبية للمنظمات غير الهادفة للربح.</li>
+                    <li>تعزيز الشراكة بين القطاع الحكومي والمجتمع المدني بدلاً من علاقة الرقابة والوصاية.</li>
+                </ul>
+                <p>
+                    ختاماً، لا يمكن تحقيق تنمية سياسية ومدنية حقيقية دون تمكين المجتمع الأهلي من ممارسة دوره بحرية ومسؤولية، باعتباره شريكاً لا غنى عنه في بناء الدولة الحديثة.
+                </p>
+            </article>
+
+            <!-- تذييل المقال -->
+            <div class="article-footer">
+                <div class="tags">
+                    <strong>الوسوم:</strong>
+                    <span>المجتمع المدني</span>
+                    <span>القانون</span>
+                    <span>حقوق الإنسان</span>
+                    <span>التشريعات</span>
+                </div>
+                <div class="share-buttons">
+                    <strong>مشاركة:</strong>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </main>
+
+        <!-- الشريط الجانبي (Sidebar) -->
+        <aside class="sidebar">
+            
+            <!-- أداة البحث -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">بحث في الموقع</h3>
+                <div style="position: relative;">
+                    <input type="text" placeholder="اكتب كلمة البحث..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                    <button style="position: absolute; left: 10px; top: 10px; background: none; border: none; color: var(--primary-color); cursor: pointer;"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <!-- التصنيفات -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">التصنيفات</h3>
+                <ul class="categories-list">
+                    <li><a href="#">أوراق سياسات</a> <span>(12)</span></li>
+                    <li><a href="#">حقوق الإنسان</a> <span>(8)</span></li>
+                    <li><a href="#">دراسات دستورية</a> <span>(5)</span></li>
+                    <li><a href="#">توعية مدنية</a> <span>(15)</span></li>
+                    <li><a href="#">تقارير دولية</a> <span>(3)</span></li>
+                </ul>
+            </div>
+
+            <!-- أحدث المقالات -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">أحدث المقالات</h3>
+                <div class="sidebar-posts">
+                    <div class="post-item">
+                        <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="post" class="post-thumb">
+                        <div class="post-info">
+                            <h4><a href="#">الحق في الوصول للمعلومات: ضرورة ديمقراطية</a></h4>
+                            <span class="post-date">18 أكتوبر 2023</span>
+                        </div>
+                    </div>
+                    <div class="post-item">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="post" class="post-thumb">
+                        <div class="post-info">
+                            <h4><a href="#">مفهوم المواطنة الفاعلة وأدوار الشباب</a></h4>
+                            <span class="post-date">15 أكتوبر 2023</span>
+                        </div>
+                    </div>
+                    <div class="post-item">
+                        <img src="https://images.unsplash.com/photo-1541872703-74c5963631df?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="post" class="post-thumb">
+                        <div class="post-info">
+                            <h4><a href="#">الفصل بين السلطات: ضمانة للحرية</a></h4>
+                            <span class="post-date">10 أكتوبر 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- النشرة البريدية -->
+            <div class="sidebar-widget newsletter-box">
+                <h3 class="widget-title">النشرة البريدية</h3>
+                <p>اشترك للحصول على أحدث الدراسات والأخبار الحقوقية.</p>
+                <form>
+                    <input type="email" placeholder="البريد الإلكتروني" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">اشترك الآن</button>
+                </form>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>منتدى الأمين</h3>
+                <p style="color: #cbd5e0; font-size: 0.9rem;">شريكك في التنمية السياسية والوعي الحقوقي.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>روابط مهمة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html#about">الرؤية والرسالة</a></li>
+                    <li><a href="index.html#books">المكتبة الحقوقية</a></li>
+                    <li><a href="articles.html">أوراق السياسات</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@alaminrights.org</li>
+                    <li><i class="fas fa-phone"></i> +966 11 234 5678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> المقر الرئيسي</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة &copy; 2023 منتدى الأمين لتنمية الحقوق السياسية والمدنية</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن المنتدى - منتدى الأمين</title>
+    <!-- استدعاء خط "تجوال" و "أميري" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-balance-scale"></i>
+            منتدى الأمين
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+                <a href="books.html" class="nav-link">الكتب</a>
+            </li>
+            <li class="nav-item">
+                <a href="articles.html" class="nav-link">أبحاث ومقالات <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">بحوث ودراسات</a></li>
+                    <li><a href="#" class="dropdown-item">مقالات عامة</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#events" class="nav-link">الفعاليات <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">المؤتمرات</a></li>
+                    <li><a href="#" class="dropdown-item">المنتدى الثقافي</a></li>
+                </ul>
+            </li>
+            <li class="nav-item active">
+                <a href="about.html" class="nav-link">عن المنتدى</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <header class="page-header">
+        <h1>عن منتدى الأمين</h1>
+        <div class="breadcrumb">الرئيسية / من نحن</div>
+    </header>
+
+    <!-- قسم التعريف -->
+    <section class="section-about">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2>هويتنا وأهدافنا</h2>
+                <p>
+                    تأسس منتدى الأمين كمركز دراسات فكري مستقل يهدف إلى تعزيز مفاهيم الحقوق السياسية والمدنية في المجتمع العربي. نحن نؤمن بأن الوعي القانوني هو الحجر الأساس لبناء مجتمعات تسودها العدالة والمساواة.
+                </p>
+                <p>
+                    من خلال أبحاثنا الرصينة، وإصداراتنا الدورية، وفعالياتنا الثقافية، نسعى لمد جسور التواصل بين الأكاديميين والقانونيين وصناع القرار، بهدف تطوير المنظومة التشريعية والحقوقية بما يتماشى مع التطلعات الحديثة.
+                </p>
+                <p>
+                    يعمل في المنتدى نخبة من الباحثين المتخصصين في القانون الدستوري، العلوم السياسية، وحقوق الإنسان، ملتزمين بمنهجية علمية صارمة وحياد معرفي تام.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="img/logo.png" alt="فريق عمل منتدى الأمين">
+            </div>
+        </div>
+    </section>
+
+    <!-- الرؤية والرسالة -->
+    <section class="mission-vision">
+        <div class="cards-grid">
+            <div class="info-card">
+                <i class="fas fa-eye"></i>
+                <h3>رؤيتنا</h3>
+                <p>أن نكون المرجع الفكري والحقوقي الأول في المنطقة، مساهمين في خلق جيل واعٍ بحقوقه وواجباته المدنية.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>رسالتنا</h3>
+                <p>نشر الثقافة الحقوقية وتطوير الفكر السياسي من خلال البحث العلمي الجاد والتوعية المستمرة وتدريب الكوادر الشابة.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-history"></i>
+                <h3>تاريخنا</h3>
+                <p>بدأت مسيرتنا منذ عقد من الزمان، أصدرنا خلالها أكثر من 50 دراسة محكمة ونظمنا عشرات المؤتمرات الإقليمية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- القيم الجوهرية -->
+    <section class="section values-section-about">
+        <h2>قيمنا الجوهرية</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>النزاهة</h4>
+                <p>نلتزم بأعلى معايير الأخلاق المهنية في كل أبحاثنا.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-users"></i></div>
+                <h4>التعددية</h4>
+                <p>نحترم كافة الآراء ونؤمن بضرورة الحوار البناء.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                <h4>الابتكار</h4>
+                <p>نبحث دائماً عن حلول قانونية مبتكرة لمواجهة التحديات.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                <h4>التعاون</h4>
+                <p>نؤمن بالشراكة مع المؤسسات الدولية والمحلية لخدمة قضايا الحقوق.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>منتدى الأمين</h3>
+                <p>مركز دراسات مستقل يعنى بتنمية الحقوق السياسية والمدنية ونشر الوعي الحقوقي.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="articles.html">المقالات</a></li>
+                    <li><a href="books.html">المكتبة</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@alaminrights.org</li>
+                    <li><i class="fas fa-phone"></i> +966 11 000 0000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة &copy; 2025 منتدى الأمين لتنمية الحقوق السياسية والمدنية</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
